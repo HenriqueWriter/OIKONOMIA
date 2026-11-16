@@ -1,0 +1,1350 @@
+
+/* =====================================================
+   1. CONFIGURAÇÕES GERAIS
+===================================================== */
+
+:root {
+    --cor-fundo: #151515;
+    --cor-card: #080808;
+    --cor-card-secundario: #202020;
+
+    --cor-azul: #1e90ff;
+    --cor-azul-claro: #53d7ff;
+
+    --cor-verde: #00ff88;
+    --cor-amarelo: #ffcc00;
+    --cor-vermelho: #ff4444;
+
+    --cor-texto: #ffffff;
+    --cor-texto-secundario: #aaaaaa;
+
+    --borda: #303030;
+    --raio: 15px;
+
+    --sombra:
+        0 0 12px rgba(83, 215, 255, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* =====================================================
+   2. ESTRUTURA PRINCIPAL
+===================================================== */
+
+.container {
+    width: 100%;
+    max-width: 1450px;
+
+    margin: 0 auto;
+    padding: 10px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 2fr)
+        minmax(0, 1fr);
+
+    gap: 20px;
+
+    align-items: start;
+}
+
+
+/* =====================================================
+   3. PADRÃO DOS CARDS
+===================================================== */
+
+.card-simples,
+.card-grafico,
+.card-despesas,
+.card,
+.card_modelos {
+    background: var(--cor-card);
+
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+
+    padding: 20px;
+
+    box-shadow: var(--sombra);
+
+    min-width: 0;
+    width: 100%;
+}
+
+.card-despesas {
+    transform: translateY(-150px);
+}
+
+.card_modelos {
+    transform: translateY(-150px);
+}
+
+
+/* =====================================================
+   4. CARDS SUPERIORES
+===================================================== */
+
+/* SALDO LIVRE */
+
+.card-simples.saldo {
+    min-height: 130px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+}
+
+
+/* GRÁFICO */
+
+.card-grafico.grafico {
+    height: 340px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.card-grafico canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+
+/* STATUS */
+
+.card-simples.status {
+    min-height: 130px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.conteudo-status {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+}
+
+#porcentagemStatus {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+#mensagemStatus {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   5. TÍTULOS
+===================================================== */
+
+h3 {
+    width: 100%;
+
+    color: var(--cor-azul-claro);
+
+    font-size: 19px;
+    font-weight: bold;
+
+    text-align: center;
+
+    margin: 0 0 20px;
+}
+
+h4 {
+    color: var(--cor-azul-claro);
+
+    font-size: 17px;
+    text-align: center;
+}
+
+
+/* =====================================================
+   6. SALDO LIVRE
+===================================================== */
+
+#campoSaldo {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#salario {
+    width: 100%;
+    max-width: 180px;
+    height: 38px;
+
+    background: var(--cor-card-secundario);
+    color: var(--cor-texto);
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    text-align: center;
+    font-size: 18px;
+
+    outline: none;
+}
+
+#salario:focus {
+    border-color: var(--cor-azul);
+}
+
+
+/* SALDO EXIBIDO */
+
+#saldoExibido {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+#valorSaldo {
+    color: var(--cor-verde);
+
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+/* BOTÃO EDITAR SALDO */
+
+#btnEditarSaldo {
+    width: 32px;
+    height: 32px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    background: transparent;
+    color: var(--cor-azul);
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btnEditarSaldo:hover {
+    color: var(--cor-azul-claro);
+    background: #1e90ff20;
+}
+
+
+/* =====================================================
+   7. CAMPOS DE ENTRADA PADRONIZADOS
+===================================================== */
+
+input {
+    min-width: 0;
+
+    height: 36px;
+
+    padding: 7px 12px;
+
+    background: var(--cor-card-secundario);
+    color: var(--cor-texto);
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: var(--cor-azul);
+
+    box-shadow:
+        0 0 5px rgba(30, 144, 255, 0.25);
+}
+
+input::placeholder {
+    color: var(--cor-texto-secundario);
+    opacity: 1;
+}
+
+
+/* =====================================================
+   8. CARD DE DESPESAS FIXAS
+===================================================== */
+
+.card-despesas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* CAMPOS DAS DESPESAS */
+
+.input_despesas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#descrição_despesas {
+    flex: 2;
+    width: 100%;
+}
+
+#valor_despesas {
+    flex: 1;
+    width: 100%;
+}
+
+
+/* =====================================================
+   9. BOTÕES PADRONIZADOS
+===================================================== */
+
+button {
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* BOTÕES DE ADICIONAR E SALVAR */
+
+#btn_AddDespesas,
+#btn_SalvarEdicao {
+    width: 38px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    background: transparent;
+    color: var(--cor-azul);
+
+    border: 1px solid var(--cor-azul);
+    border-radius: 8px;
+}
+
+#btn_AddDespesas:hover,
+#btn_SalvarEdicao:hover {
+    background: var(--cor-azul);
+    color: white;
+
+    box-shadow: 0 0 8px #1e90ff66;
+}
+
+
+/* =====================================================
+   10. GASTOS DO DIA
+===================================================== */
+
+.gastos-dia {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+/* INPUT E BOTÕES LADO A LADO */
+
+.campo-gasto-container {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    width: 100%;
+}
+
+.campo-gasto-container input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+
+/* BOTÕES DOS GASTOS */
+
+#BtnGastosDia,
+#btnSalvarEdicaoGasto,
+#btnRelatorio {
+    min-width: 85px;
+    height: 36px;
+
+    flex-shrink: 0;
+
+    padding: 0 12px;
+
+    background: var(--cor-azul);
+    color: white;
+
+    border: 1px solid var(--cor-azul);
+    border-radius: 8px;
+
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#BtnGastosDia:hover,
+#btnSalvarEdicaoGasto:hover,
+#btnRelatorio:hover {
+    background: #0874d1;
+    border-color: #0874d1;
+
+    box-shadow: 0 0 8px #1e90ff66;
+}
+
+
+/* =====================================================
+   11. BOTÕES DE EDIÇÃO E EXCLUSÃO
+===================================================== */
+
+.btn-editar,
+.btn-excluir {
+    width: 32px;
+    height: 32px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 2px;
+
+    background: transparent;
+
+    border: 1px solid transparent;
+    border-radius: 7px;
+
+    cursor: pointer;
+}
+
+
+/* EDITAR */
+
+.btn-editar {
+    color: var(--cor-azul);
+}
+
+.btn-editar:hover {
+    background: var(--cor-azul);
+    color: white;
+
+    box-shadow: 0 0 7px #1e90ff66;
+}
+
+
+/* EXCLUIR */
+
+.btn-excluir {
+    color: var(--cor-vermelho);
+}
+
+.btn-excluir:hover {
+    background: var(--cor-vermelho);
+    color: white;
+
+    box-shadow: 0 0 7px #ff444466;
+}
+
+
+/* ÍCONES */
+
+.btn-editar i,
+.btn-excluir i {
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   12. TABELAS
+===================================================== */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    color: var(--cor-texto);
+
+    font-size: 13px;
+}
+
+th,
+td {
+    padding: 10px 6px;
+
+    text-align: center;
+    vertical-align: middle;
+
+    border: 1px solid var(--borda);
+}
+
+th {
+    background: #191919;
+
+    color: var(--cor-azul-claro);
+
+    font-weight: bold;
+}
+
+td {
+    background: #0e0e0e;
+}
+
+tbody tr:hover td {
+    background: #202020;
+}
+
+
+/* TOTAL DAS DESPESAS */
+
+#totalDespesas {
+    color: var(--cor-verde);
+
+    font-size: 14px;
+    font-weight: bold;
+
+    text-align: right;
+
+    padding: 12px;
+}
+
+
+/* =====================================================
+   13. MODELOS FINANCEIROS
+===================================================== */
+
+.card_modelos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 15px;
+
+    height: fit-content;
+}
+
+
+/* BOTÕES DOS MODELOS */
+
+.botoes-modelos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 10px;
+
+    width: 100%;
+}
+
+#Modelo50_30_20,
+#Modelo70_30,
+#ModeloPersona {
+    width: 100%;
+    max-width: 220px;
+
+    height: 38px;
+
+    background: #292929;
+    color: white;
+
+    border: 1px solid #444;
+    border-radius: 8px;
+
+    font-size: 14px;
+}
+
+#Modelo50_30_20:hover,
+#Modelo70_30:hover,
+#ModeloPersona:hover {
+    background: var(--cor-azul);
+    border-color: var(--cor-azul);
+}
+
+
+/* MODELO ATIVO */
+
+.botoes-modelos button.modelo-ativo {
+    background: var(--cor-azul);
+
+    border-color: var(--cor-azul-claro);
+
+    color: white;
+
+    box-shadow: 0 0 8px #1e90ff55;
+}
+
+
+/* =====================================================
+   14. PERSONALIZAÇÃO DOS MODELOS
+===================================================== */
+
+#personalizarModelo {
+    width: 100%;
+
+    padding: 12px;
+
+    text-align: center;
+}
+
+#personalizarModelo label {
+    display: block;
+
+    margin-top: 12px;
+
+    color: var(--cor-texto-secundario);
+
+    font-size: 14px;
+}
+
+#personalizarModelo input {
+    width: 90px;
+    height: 34px;
+
+    margin-top: 5px;
+
+    background: var(--cor-card-secundario);
+    color: white;
+
+    border: 1px solid #444;
+    border-radius: 7px;
+
+    text-align: center;
+}
+
+#somaPorcentagens {
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+
+/* BOTÃO APLICAR */
+
+#btnAplicarPersonalizado {
+    width: 100%;
+    max-width: 180px;
+
+    height: 38px;
+
+    background: var(--cor-azul);
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+}
+
+#btnAplicarPersonalizado:hover {
+    background: #0874d1;
+}
+
+
+/* =====================================================
+   15. RESULTADO DA DISTRIBUIÇÃO
+===================================================== */
+
+#resultadoModelo {
+    width: 100%;
+    padding: 12px;
+}
+
+#tituloModelo {
+    color: var(--cor-azul-claro);
+
+    text-align: center;
+
+    margin-bottom: 15px;
+}
+
+.item-distribuicao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 6px;
+
+    background: var(--cor-card-secundario);
+
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+
+    padding: 14px;
+    margin-bottom: 10px;
+}
+
+.item-distribuicao span:first-child {
+    color: white;
+    font-weight: bold;
+}
+
+.item-distribuicao span:nth-child(2) {
+    color: var(--cor-texto-secundario);
+    font-size: 13px;
+}
+
+.item-distribuicao strong {
+    color: var(--cor-azul-claro);
+    font-size: 18px;
+}
+
+
+
+/* =====================================================
+   16. DESKTOP
+===================================================== */
+
+.container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+}
+
+/* Remove deslocamentos que prejudicam o Grid */
+
+.card-despesas,
+.card_modelos {
+    transform: none;
+}
+
+/* =====================================================
+   17. TABLETS
+===================================================== */
+
+@media screen and (max-width: 1000px) {
+
+    .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .card-despesas,
+    .card_modelos {
+        transform: none;
+    }
+
+}
+
+/* =====================================================
+   18. MOBILE
+===================================================== */
+
+@media screen and (max-width: 768px) {
+
+    body {
+        padding: 10px;
+        overflow-x: hidden;
+    }
+
+    /* GRID PRINCIPAL */
+
+    .container {
+        display: grid !important;
+
+        width: 100%;
+        max-width: 100%;
+
+        margin: 0;
+        padding: 0;
+
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        grid-template-areas:
+
+            "saldo status"
+
+            "grafico grafico"
+
+            "gastos gastos"
+
+            "despesas modelos";
+
+        gap: 12px;
+
+        align-items: start;
+    }
+
+    /* POSIÇÃO DOS CARDS */
+
+    .container > .saldo {
+        grid-area: saldo;
+    }
+
+    .container > .status {
+        grid-area: status;
+    }
+
+    .container > .grafico {
+        grid-area: grafico;
+    }
+
+    .container > .gastos-dia {
+        grid-area: gastos;
+    }
+
+    .container > .card-despesas {
+        grid-area: despesas;
+    }
+
+    .container > .card_modelos {
+        grid-area: modelos;
+    }
+
+    /* RESET DOS CARDS */
+
+    .container > div {
+        transform: none !important;
+
+        position: relative;
+
+        min-width: 0;
+        width: 100%;
+
+        margin: 0;
+    }
+
+    /* SALDO */
+
+    .card-simples.saldo {
+        min-height: 125px;
+        padding: 10px;
+    }
+
+    #salario {
+        width: 100%;
+        font-size: 15px;
+    }
+
+    #saldoExibido {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    #valorSaldo {
+        font-size: 16px;
+    }
+
+    /* STATUS */
+
+    .card-simples.status {
+        min-height: 125px;
+        padding: 10px;
+    }
+
+    #porcentagemStatus {
+        font-size: 22px;
+    }
+
+    #mensagemStatus {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    #btnRelatorio {
+        width: 100%;
+        min-width: 0;
+        padding: 0 5px;
+        font-size: 11px;
+    }
+
+    /* GRÁFICO */
+
+    .card-grafico.grafico {
+        height: 260px;
+        padding: 12px;
+    }
+
+    .card-grafico canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    /* GASTOS DO DIA */
+
+    .gastos-dia {
+        padding: 15px;
+    }
+
+    .campo-gasto-container {
+        flex-wrap: wrap;
+    }
+
+    #gasto {
+        width: 100%;
+    }
+
+    #BtnGastosDia,
+    #btnSalvarEdicaoGasto {
+        width: 100%;
+    }
+
+    /* DESPESAS FIXAS */
+
+    .card-despesas {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .input_despesas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 7px;
+    }
+
+    #descrição_despesas,
+    #valor_despesas {
+        width: 100%;
+        flex: none;
+    }
+
+    #btn_AddDespesas,
+    #btn_SalvarEdicao {
+        width: 100%;
+    }
+
+    .card-despesas table {
+        font-size: 10px;
+    }
+
+    .card-despesas th,
+    .card-despesas td {
+        padding: 6px 2px;
+    }
+
+    /* MODELOS */
+
+    .card_modelos {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .botoes-modelos {
+        width: 100%;
+    }
+
+    #Modelo50_30_20,
+    #Modelo70_30,
+    #ModeloPersona {
+        width: 100%;
+        height: auto;
+        min-height: 36px;
+        padding: 5px 2px;
+        font-size: 11px;
+    }
+
+    #personalizarModelo {
+        padding: 3px;
+    }
+
+    #personalizarModelo input {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #resultadoModelo {
+        padding: 3px;
+    }
+
+    .item-distribuicao {
+        padding: 7px;
+    }
+
+    .item-distribuicao strong {
+        font-size: 13px;
+    }
+
+    /* TÍTULOS */
+
+    h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+}
+
+/* =====================================================
+   19. CELULARES PEQUENOS
+===================================================== */
+
+/* =====================================================
+   18. CELULARES PEQUENOS - ATÉ 375PX
+===================================================== */
+
+@media screen and (max-width: 375px) {
+
+    /* CONTAINER PRINCIPAL */
+    .container {
+        width: 100%;
+        padding: 0;
+        gap: 8px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* TODOS OS CARDS */
+    .container > div {
+        min-width: 0;
+        max-width: 100%;
+        padding: 8px;
+        border-radius: 10px;
+        transform: none !important;
+    }
+
+    /* TÍTULOS */
+    h3 {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    h4 {
+        font-size: 13px;
+        margin: 8px 0;
+    }
+
+    /* SALDO */
+    .card-simples.saldo {
+        min-height: 125px;
+        padding: 7px;
+    }
+
+    #salario {
+        height: 32px;
+        font-size: 13px;
+        max-width: 100%;
+    }
+
+    #valorSaldo {
+        font-size: 13px;
+    }
+
+    #btnEditarSaldo {
+        width: 25px;
+        height: 25px;
+    }
+
+    /* STATUS */
+    .card-simples.status {
+        min-height: 125px;
+        padding: 7px;
+    }
+
+    .conteudo-status {
+        gap: 5px;
+    }
+
+    #porcentagemStatus {
+        font-size: 19px;
+    }
+
+    #mensagemStatus {
+        font-size: 10px;
+    }
+
+    #btnRelatorio {
+        width: 100%;
+        min-width: 0;
+        height: 29px;
+        padding: 3px;
+        font-size: 9px;
+    }
+
+    /* GRÁFICO */
+    .card-grafico.grafico {
+        height: 220px;
+        padding: 8px;
+    }
+
+    /* GASTOS DO DIA */
+    .gastos-dia {
+        padding: 8px;
+        gap: 8px;
+    }
+
+    #gasto {
+        width: 100%;
+        height: 32px;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    #BtnGastosDia,
+    #btnSalvarEdicaoGasto {
+        width: 100%;
+        min-width: 0;
+        height: 30px;
+        padding: 4px;
+        font-size: 11px;
+    }
+
+    /* DESPESAS FIXAS */
+    .card-despesas {
+        padding: 7px;
+        gap: 7px;
+        overflow: hidden;
+    }
+
+    .input_despesas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+        margin-bottom: 5px;
+    }
+
+    #descrição_despesas,
+    #valor_despesas {
+        width: 100%;
+        height: 30px;
+        padding: 5px;
+        font-size: 10px;
+    }
+
+    /* BOTÕES DE DESPESAS */
+    #btn_AddDespesas,
+    #btn_SalvarEdicao {
+        width: 100%;
+        height: 29px;
+        padding: 4px;
+        font-size: 11px;
+    }
+
+    /* TABELAS */
+    .card-despesas table,
+    #tabela-gastos {
+        width: 100%;
+        table-layout: fixed;
+        font-size: 9px;
+    }
+
+    .card-despesas th,
+    .card-despesas td,
+    #tabela-gastos th,
+    #tabela-gastos td {
+        padding: 5px 1px;
+        font-size: 9px;
+        overflow-wrap: anywhere;
+    }
+
+    .btn-editar,
+    .btn-excluir {
+        width: 22px;
+        height: 24px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .btn-editar i,
+    .btn-excluir i {
+        font-size: 10px;
+    }
+
+    /* MODELOS */
+    .card_modelos {
+        padding: 7px;
+        gap: 8px;
+        overflow: hidden;
+    }
+
+    .botoes-modelos {
+        gap: 6px;
+    }
+
+    #Modelo50_30_20,
+    #Modelo70_30,
+    #ModeloPersona {
+        width: 100%;
+        min-width: 0;
+        min-height: 30px;
+        height: auto;
+        padding: 5px 2px;
+        font-size: 10px;
+        overflow-wrap: anywhere;
+    }
+
+    /* PERSONALIZAÇÃO */
+    #personalizarModelo {
+        padding: 2px;
+    }
+
+    #personalizarModelo label {
+        font-size: 10px;
+        margin-top: 8px;
+    }
+
+    #personalizarModelo input {
+        width: 65px;
+        max-width: 100%;
+        height: 28px;
+        font-size: 11px;
+        padding: 3px;
+    }
+
+    #somaPorcentagens {
+        font-size: 11px;
+        margin: 8px 0;
+    }
+
+    #btnAplicarPersonalizado {
+        width: 100%;
+        height: 30px;
+        padding: 3px;
+        font-size: 10px;
+    }
+
+    /* RESULTADO DA DISTRIBUIÇÃO */
+    #resultadoModelo {
+        padding: 2px;
+    }
+
+    #tituloModelo {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .item-distribuicao {
+        padding: 6px 3px;
+        gap: 4px;
+        margin-bottom: 6px;
+        overflow-wrap: anywhere;
+    }
+
+    .item-distribuicao span:first-child {
+        font-size: 10px;
+    }
+
+    .item-distribuicao span:nth-child(2) {
+        font-size: 9px;
+    }
+
+    .item-distribuicao strong {
+        font-size: 12px;
+    }
+
+}
+
+/* =====================================================
+   CORREÇÃO DE ROLAGEM - MOBILE / IPHONE SE
+===================================================== */
+
+html {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    height: auto !important;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+.painel-container {
+    height: auto !important;
+    min-height: 100vh;
+    overflow: visible !important;
+    align-content: start;
+}
+
+@media screen and (max-width: 768px) {
+
+    .painel-container {
+        height: auto !important;
+        min-height: 100vh;
+        overflow: visible !important;
+        align-items: start;
+        grid-auto-rows: max-content;
+    }
+
+    .painel-container > div {
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .card-despesas,
+    .card_modelos {
+        height: fit-content;
+        overflow: visible;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+
+    html,
+    body {
+        overflow-y: auto !important;
+        height: auto !important;
+    }
+
+    .painel-container {
+        padding-bottom: 30px;
+        gap: 8px;
+    }
+
+}
